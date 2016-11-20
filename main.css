@@ -54,11 +54,11 @@ body{
 }
 
 #yo{
-	height: 400px;
+	min-height: 400px;
 }
 
 #yo2{
-	height: 300px;
+	min-height: 300px;
 }
 
 #info>h1{
