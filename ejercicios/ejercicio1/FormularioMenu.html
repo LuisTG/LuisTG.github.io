@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="jqueryui/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<script rel="text/javascript" src="jqueryui/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+	<style type="text/css">
+
+		.prin{
+			margin: auto;
+		}
+
+		.prin>div{
+			/*border:1px solid black;*/
+			display: inline-block;
+		}
+
+		.izq{
+			padding: 10px;
+			height: 400px;
+			width: 55%;
+		}
+
+		.der{
+			float:right;
+			padding: 10px;
+			height: 400px;
+			width: 41%;
+		}
+
+		.miimg{
+			width:110px;
+			height:110px;
+		}
+
+		.col{
+			text-align:center;
+			padding:10px;
+			display:inline-block;
+		}
+
+		.info{
+			/*border: 1px solid black;*/
+			margin: auto;
+			margin-top: 5px;
+			padding: 5px;
+		}
+
+		.info h1{
+			margin: 5px;
+			padding:5px;
+			text-align: center;
+		}
+
+		.foto,.forma{
+			display: inline-block;
+		}
+
+		.forma{
+			/*border: 1px solid black;*/
+			margin: 10px;
+			float: right;
+			padding-right: 80px; 
+		}
+
+		.forma>div{
+			margin: 10px;
+			padding: 5px;
+		}
+
+		.forma label{
+			font-size: 20px;
+		}
+
+		.foto{
+			/*border:1px solid black;*/
+			width: 200px;
+			height: 200px;
+		}
+
+		.fotimg{
+			width: 200px;
+			height: 200px;
+		}
+
+		.platillo{
+			/*border:1px solid black;*/
+			margin: 10px 30px 10px 30px; 
+			padding: 10px;
+			
+		}
+
+		.infimg{
+			height: 300px;
+			width: 300px;
+			margin: 10px;
+			float: left;
+		}
+
+		.dat{
+			float:left;
+		}
+
+		.boton{
+			text-align: center;
+		}
+		
+		body{
+			/*background-color: #f39c12;*/
+			background-color: #bdc3c7;
+		}
+
+		.izq, .der, .info{
+			/*background-color: #e67e22;*/
+			background-color: #1abc9c;
+			border-radius: 7px;
+			padding: 10px;
+			border: 2px solid white;
+		}
+
+		button{
+			color: black;
+			font-size: 15px;
+		}
+
+		.fotimg{
+			margin: 15px;
+			-webkit-box-shadow: 0px 2px 18px 2px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 2px 18px 2px rgba(0,0,0,0.75);
+			box-shadow: 0px 2px 18px 2px rgba(0,0,0,0.75);
+		}
+
+		*{
+			color: white;
+			font-family: 'Roboto Slab', serif;
+		}
+
+		input{
+			color: black;
+-webkit-box-shadow: 0px 0px 5px 0px rgba(38,0,252,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(38,0,252,1);
+box-shadow: 0px 0px 5px 0px rgba(38,0,252,1);
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+
+		$(document).ready(function (){
+			var cont=$(".der");
+
+			$( document ).tooltip();
+
+			for (var i = 0; i < 8; i++) {
+				cont.append("<div class='col'><img class='miimg' src='"+"img"+i+".jpg'></div>");
+			};
+
+			var $img=$(".miimg");
+			var $boton=$("#bot");
+			var $insImg=$(".foto");
+			var $plat=$(".info");
+			var $c1=$("#c1");
+			var $c2=$("#c2");
+			var $c3=$("#c3");
+			var $c4=$("#datepicker");
+			var aux=0;
+			$img.on("click",function(){
+				var s=$(this).attr("src");
+				$insImg.empty();
+				$insImg.append("<img class='fotimg' src="+s+">");
+				aux=1;
+			});
+
+			$( "#datepicker" ).datepicker({inline:true});
+
+			$boton.on("click",function(e){
+				//Agregar platillo
+				e.preventDefault();
+				if($c4.val()!="" && $c1.val()!="" && $c2.val()!="" && $c3.val()!="" && aux!=0 && !isNaN($c3.val())){
+					aux=0;
+					
+					$plat.append("<div class='platillo'><img class='infimg' src="+$(".fotimg").attr("src")+" ><div class='dat'><h2>Nombre: "+$c1.val()+"</h2><h2>Descripcion: "+$c2.val()+"</h2><h2>Precio: "+$c3.val()+"</h2>"+"<h2>Vigencia: "+$c4.val()+"</h2></div><div style='clear:both;'></div></div>");
+
+					$c1.val("");
+					$c2.val("");
+					$c3.val("");
+					$c4.val("");
+					$insImg.empty();
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+	<div class="prin">
+		<div class="izq">
+			<h2>Capturar Menu</h2>
+			<div class="prin">
+			<div class="foto"></div>
+			<form class="forma" action="">
+
+				<div class="datos">
+					<label  for="">Nombre del platillo:</label>
+					<input id="c1" title="Inserte nombre del platillo" type="text">
+				</div>
+
+				<div class="datos">
+					<label for="">Descripcion:</label>
+					<input id="c2" title="Inserte una descripcion del producto" type="text">
+				</div>
+				
+				<div class="datos">
+					<label for="">Precio:</label>
+					<input id="c3" title="Inserte el precio $" type="text">
+				</div>
+
+				<div class="datos">
+					<label for="">Vigencia:</label>
+					<input id="datepicker" title="Inserte la vigencia" type="text">
+				</div>
+
+				<div class="boton"><button id="bot">Agregar Platillo</button></div>
+				
+	</form>
+
+
+		</div>
+				<!-- Datepicker -->
+
+
+		</div>
+		<div class="der"></div>
+	</div>
+	<div style="clear:both;"></div>
+
+	<div class="info">
+		<h1>MENU</h1>
+	</div>
+
+</body>
+</html>
