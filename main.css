@@ -34,6 +34,7 @@ body{
 	background: #1abc9c;
 	border-radius: 5px;
 	min-height: 400px;
+	padding: 5px;
 }
 .center{
 	text-align: center;
@@ -47,11 +48,9 @@ body{
 	background: #1abc9c;
 	border-radius: 5px;
 	min-height: 300px;
+	padding: 5px;
 }
 
-.text >h2, h3{
-
-}
 
 #yo{
 	min-height: 400px;
