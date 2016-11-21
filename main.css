@@ -16,17 +16,20 @@
 	font-family: 'Lobster', cursive;
 }
 
-.cCenter>h1{
-	color: #2c3e50;
-}
-
 .cCenter{
 	text-align: center;
+	margin: auto;
 	padding-top: 80px;
+}
+
+.cCenter>h1{
+	color: #2c3e50;
+	text-align: center;
 }
 
 .cCenter>h2{
 	color: #2c3e50;
+	text-align: center;
 	font-weight: bold;
 }
 
