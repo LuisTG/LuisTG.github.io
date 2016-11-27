@@ -1,7 +1,7 @@
 #carousel-example-generic{
 	background: url("img/cabecera.jpg");
 	background-size: cover;
-	height: 400px;
+	height: 300px;
 }
 
 .poppins{
@@ -19,7 +19,7 @@
 .cCenter{
 	text-align: center;
 	margin: auto;
-	padding-top: 80px;
+	padding-top: 25px;
 }
 
 .cCenter>h1{
@@ -35,6 +35,7 @@
 
 #info{
 	background-color: #9b59b6;
+	/*background-color: #C0BDBC;*/
 	text-align: center;
 	border-radius: 10px;
 }
@@ -111,10 +112,12 @@ body{
 }
 
 .text{
-	background: #1abc9c;
+	/*background: #1abc9c;*/
+	/*background-color: #C0BDBC;*/
+	background-color: #f39c12;
 	border-radius: 5px;
-	min-height: 400px;
-	margin-bottom: 10px;
+	min-height: 390px;
+	/*margin-bottom: 10px;*/
 }
 .center{
 	text-align: center;
@@ -125,7 +128,7 @@ body{
 	color: white;
 }
 .text2{
-	background: #1abc9c;
+	background: #f39c12;
 	border-radius: 5px;
 	min-height: 300px;
 	margin-bottom: 10px;

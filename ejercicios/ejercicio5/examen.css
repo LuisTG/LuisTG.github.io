@@ -1,0 +1,118 @@
+*{margin: 0}
+h1{
+	color: white;
+
+}
+header{
+	background-color: #2c3e50; 
+	text-align: center;
+	height: 30%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+header p{
+	color:orange;
+}
+
+nav{
+	background-color: #718Da5;
+	height: 15%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+nav>div{
+		margin-left: 150px;
+	margin-right: 150px;
+}
+nav>div>div {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+nav>div>div>a{
+	text-decoration: none;
+	color: black;
+}
+nav>div>div>a:hover{
+	color:white;
+}
+
+#centro{
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+#schedule{
+	text-align: center;
+}
+
+#schedule th, td {
+	border-left: none;
+	border-right: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+}
+
+#schedule th {
+	background-color: orange;
+
+}
+
+#browser{
+
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+#browser td{
+	border-bottom: 0px ;
+}
+
+#browser img{
+	width: 80px;
+}
+
+.information img{
+	width: 100px;
+}
+
+.information td{
+	border-bottom: 0px ;
+}
+#username{
+	width: 100px;
+}
+
+#message{
+	width: 200px;
+	height: 200px;
+}
+
+#send{
+	background-color: #2c3e50; 
+	color: white;
+	border-radius: 5px;
+}
+
+footer{
+	background-color: #2c3e50; 
+	text-align: center;
+	height: 30%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.p1{
+	color: white;
+}
+
+.p2{
+	color: orange;
+}
+
+#message, #username{
+	border-radius: 10px;
+}

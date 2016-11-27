@@ -1,9 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Curva de Bezier</title>
-<script type="text/javascript">
+	<meta charset="UTF-8">
+	<title>Curvas de Bezier</title>
+	<style>
+		*{
+			margin: 0px;
+		}
+
+		header{
+			padding: 15px;
+			text-align: center;
+			background-color: lightgray;
+			margin-bottom: 10px;
+		}
+
+		#imagen{
+			width: 100%;
+		}
+
+		.centro{
+			margin-left: 200px;
+			margin-right: 200px;
+		}
+
+		p{
+			text-align: justify;
+			font-size: 15px;
+			font-family: arial;
+		}
+
+		.centro div{
+			display: inline-block;
+		}
+
+		.der{
+			width: 59%;
+			margin-right: 10px;
+		}
+
+		.der img{
+			width: 100%;			
+		}
+
+		.der p{
+			padding-bottom: 5px;
+			padding-top: 5px;
+		}
+
+		.der h3{
+			padding-bottom: 5px;
+			padding-top: 10px;
+		}
+		
+		.izq{
+			width: 39%;
+			float: right;
+		}
+
+		.izq div{
+			padding: 5px;
+			margin-bottom: 10px;
+			background-color: lightgray;
+			width: 100%;
+		}
+		
+
+		@media screen and (max-width: 1235px){
+			.centro{
+				margin-left: 175px;
+				margin-right: 175px;
+			}		
+		}
+
+		@media screen and (max-width: 1150px){
+			.centro{
+				margin-left: 100px;
+				margin-right: 100px;
+			}		
+		}
+
+		@media screen and (max-width: 1000px){
+			.centro div{
+				display: block;
+			}	
+
+			.izq{
+			float: left;
+			width: 100%;
+			}
+
+			.der{
+				width: 100%;
+				margin-right: 0px;
+			}
+		}
+
+	</style>
+	<script type="text/javascript">
 window.addEventListener('load', eventWindowLoaded, false);
 
 
@@ -27,7 +121,6 @@ function canvasApp() {
 	 var p3 = {x:350, y:350};
 	 var ball = {x:0, y:0, speed:.01, t:0};
 	 var points = new Array();
-	 var p={p0,p1,p2,p3};
 	 var casos=4;
 
 	 function mover(e){
@@ -43,17 +136,17 @@ function canvasApp() {
 	}
 
 	 function selectCirc(){
-	 	//console.log(mouX+" "+mouY);
- 		if(p0.x+42<=mouX && p0.x+58>=mouX && p0.y+42<=mouY && p0.y+58>=mouY ){
+	 	console.log(mouX+" "+mouY);
+ 		if(p0.x+193<=mouX && p0.x+209>=mouX && p0.y+70<=mouY && p0.y+86>=mouY ){
 	 		casos=0;
 	 	}
-	 	 if(p1.x+42<=mouX && p1.x+58>=mouX && p1.y+42<=mouY && p1.y+58>=mouY ){
+	 	 if(p1.x+192<=mouX && p1.x+208>=mouX && p1.y+69<=mouY && p1.y+85>=mouY ){
 	 		casos=1;
 	 	}
-	 	 if(p2.x+42<=mouX && p2.x+58>=mouX && p2.y+42<=mouY && p2.y+58>=mouY ){
+	 	 if(p2.x+192<=mouX && p2.x+208>=mouX && p2.y+69<=mouY && p2.y+85>=mouY ){
 	 		casos=2;
 	 	}
-	 	 if(p3.x+42<=mouX && p3.x+58>=mouX && p3.y+42<=mouY && p3.y+58>=mouY ){
+	 	 if(p3.x+192<=mouX && p3.x+208>=mouX && p3.y+69<=mouY && p3.y+85>=mouY ){
 	 		casos=3;
 	 	}
 	 }
@@ -64,20 +157,20 @@ function canvasApp() {
 	 function drawScreen () {
 	 	switch(casos){
 	 		case 0:
-	 		p0.x=mouX-50;
-	 		p0.y=mouY-50;
+	 		p0.x=mouX-200;
+	 		p0.y=mouY-77;
 	 		break;
 	 		case 1:
-	 		p1.x=mouX-50;
-	 		p1.y=mouY-50;
+	 		p1.x=mouX-200;
+	 		p1.y=mouY-77;
 	 		break;
 	 		case 2:
-	 		p2.x=mouX-50;
-	 		p2.y=mouY-50;
+	 		p2.x=mouX-200;
+	 		p2.y=mouY-77;
 	 		break;
 	 		case 3:
-	 		p3.x=mouX-50;
-	 		p3.y=mouY-50;
+	 		p3.x=mouX-200;
+	 		p3.y=mouY-77;
 	 		break;
 	 		default:
 
@@ -91,14 +184,8 @@ function canvasApp() {
 		 context.strokeStyle = '#000000';
 		 context.strokeRect(1, 1, theCanvas.width-2, theCanvas.height-2);
 		 var t = ball.t;
-		 var cx = 3 * (p1.x - p0.x);
-		 var bx = 3 * (p2.x - p1.x) - cx;
-		 var ax = p3.x - p0.x - cx - bx;
-		 var cy = 3 * (p1.y - p0.y);
-		 var by = 3 * (p2.y - p1.y) - cy;
-		 var ay = p3.y - p0.y - cy - by;
-		 var xt = ax*(t*t*t) + bx*(t*t) + cx*t + p0.x;
-		 var yt = ay*(t*t*t) + by*(t*t) + cy*t + p0.y;
+		 var xt=p0.x*Math.pow(1-t,3)+p1.x*3*Math.pow(1-t,2)*t+p2.x*3*(1-t)*Math.pow(t,2)+p3.x*Math.pow(t,3);
+		 var yt=p0.y*Math.pow(1-t,3)+p1.y*3*Math.pow(1-t,2)*t+p2.y*3*(1-t)*Math.pow(t,2)+p3.y*Math.pow(t,3);
 
 		 ball.t += ball.speed;
 		 if (ball.t > 1) {
@@ -156,17 +243,57 @@ function canvasApp() {
 	 function gameLoop() {
 	 window.setTimeout(gameLoop, 20);
 
-	 drawScreen()
+	 drawScreen();
 	 }
 	 gameLoop();
 }
 </script>
 </head>
 <body>
-<div style="position: absolute; top: 50px; left: 50px;">
-<canvas id="canvasOne" width="500" height="500">
- Your browser does not support HTML5 Canvas.
-</canvas>
-</div>
+	<header>
+		<h1>Weekly Ping</h1>
+	</header>
+
+	<div class="centro">
+		<div class="der">
+			<div style="">
+			<canvas id="canvasOne" width="500" height="500">
+			 Your browser does not support HTML5 Canvas.
+			</canvas>
+			</div>
+			<h3>Cubic Bezier Curve Movement</h3>
+			<p>Cubic Bezier curves can be used to define a movement path for an object. Pierre Bezier
+first popularized these curves in the 1960s. They are widely used in 2D vector graphics
+to define smooth curves for drawing, but they can also be used in animation to define
+a path for motion.</p>
+			<p>p0: The starting point of the curve. We will refer to these x and y values as x0 and y0.</p>
+			<p>p3:The ending point of the curve. We will refer to these x and y values as x3 and y3.</p>
+			<p>p1 and p2: The control points for the curve. The curve does not pass through these points;
+instead, the equation uses these points to determine the arc of the curve. We will
+refer to these x and y values as x0, x1, x2, x3, y0, y1, y2, and y3.</p>
+			
+		</div>
+		<div class="izq">
+			<div >
+				<img id="imagen" src="ejemplo.png" alt="">
+			</div>
+						<div>
+				<h3>Formula</h3>
+				<br>
+				<p>
+					Posiciones de x, y para cada t
+				<br><br>
+				xt=p0.x*(1-t)^3 + p1.x*3*(1-t)^2*t + p2.x*3*(1-t)*t^2 + p3.x*(t)^3<br><br>
+		        yt=p0.y*(1-t)^3 + p1.y*3*(1-t)^2*t + p2.y*3*(1-t)*t^2 + p3.y*(t)^3					
+				</p>
+			</div>
+			<div>
+				<h3>Very New New!</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi mollitia eveniet facilis necessitatibus ipsam, nostrum quia numquam dicta maiores. Vel iure eaque quasi exercitationem tempora doloribus iste, hic itaque dolor.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur tempora modi tempore sapiente hic omnis animi quibusdam culpa laboriosam, aut quia obcaecati corporis cupiditate molestiae, tenetur atque soluta quisquam nam.</p>
+			</div>
+			
+		</div>
+	</div>
 </body>
 </html>
